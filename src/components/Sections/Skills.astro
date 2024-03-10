@@ -1,0 +1,61 @@
+---
+import Section from "../Section.astro"
+import Photoshop from "@/icons/photoshop.astro"
+import Illustrator from "@/icons/illustrator.astro"
+import Indesign from "@/icons/indesign.astro"
+import Figma from "@/icons/figma.astro"
+import Wordpress from "@/icons/wordpress.astro"
+import HTML from "@/icons/html.astro"
+import CSS from "@/icons/css.astro"
+import Tailwind from "@/icons/tailwind.astro"
+
+import { skills } from '@cv'
+
+const SKILLS_ICONS: Record<string, any> = {
+Photoshop,
+Illustrator,
+Indesign,
+Figma,
+Wordpress,
+HTML,
+CSS,
+Tailwind
+}
+---
+
+<Section title="Habilidades">
+    <ul>
+      {
+        skills.map(({ name }) => {
+          const iconName = name === "Next.js" ? "Next" : name
+          const Icon = SKILLS_ICONS[iconName]
+  
+          return (
+            <li>
+              {Icon && <Icon />} <span>{name}</span>
+            </li>
+          )
+        })
+      }
+    </ul>
+  </Section>
+
+<style>
+  ul {
+    display: inline-flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  li {
+    align-items: center;
+    background: #eee;
+    border-radius: 6px;
+    color: black;
+    display: flex;
+    font-size: 0.8rem;
+    font-weight: 500;
+    gap: 4px;
+    padding: 0.2rem 0.6rem;
+  }
+</style>
